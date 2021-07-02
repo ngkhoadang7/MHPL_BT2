@@ -1,0 +1,39 @@
+﻿@model TourDuLich.Models.tour_chiphi
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h2>Bạn có chăc muốn xóa chi phí đi tour này?</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Đoàn
+        </dt>
+
+        <dd>
+            @ViewBag.doan
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chiphi_total)
+        </dt>
+
+        <dd>
+            @TourDuLich.Controllers.tourCPhiController.formatMoneyToPrint(Model.chiphi_total) VND
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+        </div>
+    }
+    <div style="margin-top: 30px">
+        @Html.ActionLink("Quay lại danh sách chi phí", "Index")
+    </div>
+</div>

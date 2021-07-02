@@ -1,0 +1,188 @@
+﻿@model TourDuLich.Models.tour_nguoidi
+
+@{
+    ViewBag.Title = "Edit";
+}
+@Scripts.Render("~/bundles/jquery")
+<script>
+    var id_staffs = [@ViewBag.id_staffs];
+    var id_customers = [@ViewBag.id_customers];
+
+</script>
+<script src="~/Content/JS/tourNDiController.js"></script>
+<h2>Chỉnh sửa danh sách Đoàn đi</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.nguoidi_id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.doan_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.doan_id, ViewBag.doan as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.doan_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nguoidi_dsnhanvien, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                <button class="btn btn-primary" id="btnShowStaffPopup" type="button" onclick="showStaffPopup()">Chọn nhân viên</button>
+            </div>
+            <div class="col-md-9 mt-10">
+                @*@Html.EditorFor(model => model.nguoidi_dsnhanvien, new { htmlAttributes = new { @class = "form-control max-width" } })
+                    @Html.ValidationMessageFor(model => model.nguoidi_dsnhanvien, "", new { @class = "text-danger" })*@
+                <div style="height:224px; overflow-y:auto; overflow-x:hidden">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width:10%">Mã NV</th>
+                                <th scope="col">Họ tên</th>
+                                <th scope="col">Ngày sinh</th>
+                                <th scope="col">Công việc</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staffTable">
+                            @foreach (var item in ViewBag.staffs)
+                            {
+                                <tr>
+                                    <th scope="row">
+                                        @item.nv_id
+                                        <input type="hidden" value="@item.nv_id" name="nv_id" />
+                                    </th>
+                                    <td>@item.nv_ten</td>
+                                    <td>@item.nv_ngaysinh.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.nv_nhiemvu</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nguoidi_dskhach, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                <button class="btn btn-primary" id="btnShowCustomerPopup" type="button" onclick="showCustomerPopup()">Chọn khách hàng</button>
+            </div>
+            <div class="col-md-9 mt-10">
+                @*@Html.EditorFor(model => model.nguoidi_dskhach, new { htmlAttributes = new { @class = "form-control max-width" } })
+                    @Html.ValidationMessageFor(model => model.nguoidi_dskhach, "", new { @class = "text-danger" })*@
+                <div style="height:224px; overflow-y:auto; overflow-x:hidden">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã KH</th>
+                                <th scope="col">Họ tên</th>
+                                <th scope="col">Ngày sinh</th>
+                                <th scope="col">CMND</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customerTable">
+                            @foreach (var item in ViewBag.customers)
+                            {
+                                <tr>
+                                    <th scope="row"> 
+                                        @item.kh_id
+                                        <input type="hidden" value="@item.kh_id" name="kh_id" />
+                                    </th>
+                                    <td>@item.kh_ten</td>
+                                    <td>@item.kh_ngaysinh.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.kh_cmnd</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-5" style="float:left">
+                <input type="submit" value="Lưu thông tin" class="btn btn-success" style="float:right" />
+                @Html.ActionLink("Xóa", "Delete", new { id = Model.nguoidi_id }, htmlAttributes: new { @class = "btn btn-danger", @role = "button" })
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</div>
+
+<div class="modal fade" tabindex="-1" id="staffPopup" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onclick="hideStaffPopup()">×</button>
+                <h4 class="modal-title">Danh sách Nhân viên</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width:10%">Mã NV</th>
+                            <th scope="col">Họ tên</th>
+                            <th scope="col">Ngày sinh</th>
+                            <th scope="col">Công việc</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="staffTableModal">
+                    </tbody>
+                </table>
+                <div>
+                    <ul class="pagination" style="margin:0;" id="paginationStaff">
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="acceptStaffModal()">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="costumerPopup" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onclick="hideCustomerPopup()">×</button>
+                <h4 class="modal-title">Danh sách Khách hàng</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" style="width:10%">Mã KH</th>
+                            <th scope="col">Họ tên</th>
+                            <th scope="col">Ngày sinh</th>
+                            <th scope="col">CMND</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerTableModal">
+                    </tbody>
+                </table>
+                <div>
+                    <ul class="pagination" style="margin:0;" id="paginationCustomer">
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="acceptCustomerModal()">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TourDuLich.Controllers.tourDoanController.ViewModelIndex>
+
+@{
+    ViewBag.Title = "Index";
+}
+@Scripts.Render("~/bundles/jquery")
+    <script src="~/Content/JS/tourDoanIndex.js"></script>
+<h2>Danh sách Đoàn đi</h2>
+
+<p>
+    @Html.ActionLink("Thêm Đoàn đi", "Create")
+</p>
+<div class="form-inline" style="margin-bottom: 10px">
+    <label for="tour_id">Chọn Tour</label>
+    @Html.DropDownList("tour_id", ViewBag.tours as SelectList, new { @class = "form-control", @onchange = "updateGroup()" })
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tour_doan.doan_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tour_doan.doan_ngaydi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tour_doan.doan_ngayve)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tour_doan.gia_id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tableGroup">
+        
+    </tbody>
+</table>

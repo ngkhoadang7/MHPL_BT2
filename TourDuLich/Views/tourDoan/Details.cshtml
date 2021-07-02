@@ -1,0 +1,65 @@
+﻿@model TourDuLich.Controllers.tourDoanController.ViewModelIndex
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết Đoàn đi</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_doan.tour_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tour_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_doan.doan_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tour_doan.doan_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_doan.doan_ngaydi)
+        </dt>
+
+        <dd>
+            @Model.tour_doan.doan_ngaydi.ToString("dd/MM/yyyy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_doan.doan_ngayve)
+        </dt>
+
+        <dd>
+            @Model.tour_doan.doan_ngayve.ToString("dd/MM/yyyy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_doan.doan_chitietchuongtrinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tour_doan.doan_chitietchuongtrinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_doan.gia_id)
+        </dt>
+
+        <dd>
+            @TourDuLich.Controllers.tourDoanController.formatMoneyToPrint(Model.gia_sotien) VND
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.tour_doan.doan_id }) |
+    @Html.ActionLink("Quay về danh sách Đoàn đi", "Index")
+</p>

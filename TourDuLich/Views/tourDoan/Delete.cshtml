@@ -1,0 +1,72 @@
+﻿@model TourDuLich.Controllers.tourDoanController.ViewModelIndex
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h2>Bạn có chắc muốn xóa Đoàn đi này?</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_doan.tour_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tour_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_doan.doan_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tour_doan.doan_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_doan.doan_ngaydi)
+        </dt>
+
+        <dd>
+            @Model.tour_doan.doan_ngaydi.ToString("dd/MM/yyyy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_doan.doan_ngayve)
+        </dt>
+
+        <dd>
+            @Model.tour_doan.doan_ngayve.ToString("dd/MM/yyyy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_doan.doan_chitietchuongtrinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tour_doan.doan_chitietchuongtrinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_doan.gia_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gia_sotien) VND
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+        </div>
+    }
+
+    <div style="margin-top: 30px">
+        @Html.ActionLink("Quay lại danh sách Đoàn đi", "Index")
+    </div>
+</div>

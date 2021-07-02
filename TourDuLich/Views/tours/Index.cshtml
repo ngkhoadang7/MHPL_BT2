@@ -1,0 +1,44 @@
+﻿@model IEnumerable<TourDuLich.Controllers.toursController.ViewModelIndex>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách Tour</h2>
+
+<p>
+    @Html.ActionLink("Tạo Tour mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tour.tour_ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tour.tour_mota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tour.loai_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tour.tour_ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tour.tour_mota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.loai_ten)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.tour.tour_id }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.tour.tour_id })
+        </td>
+    </tr>
+}
+
+</table>

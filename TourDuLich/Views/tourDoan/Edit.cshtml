@@ -1,0 +1,82 @@
+﻿@model TourDuLich.Models.tour_doan
+
+@{
+    ViewBag.Title = "Edit";
+}
+    <script src="~/Content/JS/tourDoanController.js"></script>
+<h2>Chỉnh sửa Đoàn đi Tour</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.doan_id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tour_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.tour_id, ViewBag.tours as SelectList, new { @class = "form-control", @onchange = "updatePrice()" })
+                @Html.ValidationMessageFor(model => model.tour_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.doan_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.doan_name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.doan_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.doan_ngaydi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.doan_ngaydi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.doan_ngaydi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.doan_ngayve, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.doan_ngayve, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.doan_ngayve, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.doan_chitietchuongtrinh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.doan_chitietchuongtrinh, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.doan_chitietchuongtrinh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gia_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.gia_id, ViewBag.prices as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.gia_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-5" style="float:left">
+                <input type="submit" value="Lưu thông tin" class="btn btn-success" style="float:right" />
+                @Html.ActionLink("Xóa", "Delete", new { id = Model.doan_id }, htmlAttributes: new { @class = "btn btn-danger", @role = "button" })
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay về danh sách Đoàn đi", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

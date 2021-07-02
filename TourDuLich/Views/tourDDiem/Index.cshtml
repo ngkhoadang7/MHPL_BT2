@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TourDuLich.Models.tour_diadiem>
+
+@{
+    ViewBag.Title = "Index";
+}
+    <script src="~/Content/JS/tourDDiemController.js"></script>
+<h2>Danh sách Địa điểm</h2>
+
+<p>
+    @Html.ActionLink("Thêm Địa điểm", "Create")
+</p>
+<div class="form-inline" style="margin-bottom: 10px">
+    <label for="thanhPho">Chọn Thành phố</label>
+    @Html.DropDownList("thanhPho", ViewBag.thanhPho as SelectList, new { @class = "form-control", @onchange = "updateLocation()" })
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>
+                @Html.DisplayNameFor(model => model.dd_ten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dd_mota)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tableLocation">
+    </tbody>
+
+
+</table>

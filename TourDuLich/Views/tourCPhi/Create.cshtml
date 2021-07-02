@@ -1,0 +1,89 @@
+﻿@model TourDuLich.Models.tour_chiphi
+
+@{
+    ViewBag.Title = "Create";
+}
+@Scripts.Render("~/bundles/jquery")
+    <script src="~/Content/JS/tourCPhiController.js"></script>
+<h2>Nhập chi phí đoàn đi tour</h2>
+<hr />
+<div class="row">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-md-12">
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    @Html.LabelFor(model => model.doan_id, htmlAttributes: new { @class = "control-label" })
+                    @Html.DropDownListFor(model => model.doan_id, ViewBag.doan as SelectList, new { @class = "form-control max-width" })
+                    @Html.ValidationMessageFor(model => model.doan_id, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="loaiChiPhi">Loại chi phí</label>
+                    @Html.DropDownList("loaiChiPhiOption", ViewBag.loaiChiPhi as SelectList, new { @class = "form-control max-width" })
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label for="hoaDon">Hóa đơn</label>
+                    <input type="text" class="form-control max-width" id="hoaDon">
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label for="noiDung">Nội dung</label>
+                    <input type="text" class="form-control max-width" id="noiDung">
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label for="ngay">Ngày thanh toán</label>
+                    <input type="date" class="form-control max-width" id="ngay">
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label for="soTien">Số tiền</label>
+                    <input type="text" class="form-control max-width" id="soTien">
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="button" value="Thêm" class="btn btn-primary" onclick="addCost()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8" >
+            <div style="height:320px; overflow-y:auto; overflow-x:hidden">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Hóa đơn</th>
+                            <th scope="col">Loại chi phí</th>
+                            <th scope="col">Nội dung</th>
+                            <th scope="col">Ngày</th>
+                            <th scope="col">Số tiền</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="costDetailTable">
+                    </tbody>
+                </table>
+            </div>
+            <div style="margin-top:30px">
+                <h4><b>Tổng cộng: </b><span id="totalShow">0</span> VND</h4>
+                @Html.EditorFor(model => model.chiphi_total, new { htmlAttributes = new { @class = "form-control", @style = "display:none" } })
+            </div>
+        </div>
+
+        <div class="col-md-12" style="margin-top:30px">
+            <input type="submit" value="Lưu" class="btn btn-success" />
+        </div>
+    }
+
+</div>
+<div>
+    @Html.ActionLink("Quay lại danh sách chi phí", "Index")
+</div>

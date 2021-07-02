@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TourDuLich.Controllers.ThongKeController.ViewModelIndex>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Thống kê doanh thu tour</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tour
+            </th>
+            <th>
+                Tổng số đoàn đi
+            </th>
+            <th>
+                Tổng doanh thu
+            </th>
+            <th>
+                Tổng chi phí
+            </th>
+            <th>
+                Lãi
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tableSatistic">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.tourName
+            </td>
+            <td>
+                @item.numOfGroups
+            </td>
+            <td>
+                @TourDuLich.Controllers.ThongKeController.formatMoneyToPrint((decimal)item.revenue)
+            </td>
+            <td>
+                @if (item.expenses == 0)
+                {
+                    @Html.ActionLink("Thêm chi phí", "Create", new { controller = "tourCPhi" })
+                }
+                else
+                {
+                    @TourDuLich.Controllers.ThongKeController.formatMoneyToPrint((decimal)item.expenses)
+                }
+            </td>
+            <td>
+                @TourDuLich.Controllers.ThongKeController.formatMoneyToPrint((decimal)item.profit)
+            </td>
+            <td>
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.tourID})
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

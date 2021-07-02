@@ -1,0 +1,58 @@
+﻿@model TourDuLich.Models.tour_nhanvien
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tour_nhanvien</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nv_ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nv_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nv_sdt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nv_sdt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nv_ngaysinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nv_ngaysinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nv_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nv_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nv_nhiemvu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nv_nhiemvu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.nv_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

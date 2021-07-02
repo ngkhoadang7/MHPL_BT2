@@ -1,0 +1,36 @@
+﻿@model IEnumerable<TourDuLich.Models.tour_gia>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Content/JS/tourGiaController.js"></script>
+<h2>Danh sách bảng giá Tour</h2>
+
+<p>
+    @Html.ActionLink("Thêm Giá mới", "Create")
+</p>
+<div  class="form-inline" style="margin-bottom: 10px">
+    <label for="tour_id">Chọn Tour</label>
+    @Html.DropDownList("tour_id", ViewBag.tours as SelectList, new { @class = "form-control", @onchange= "updatePrice()"})
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gia_sotien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gia_tungay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gia_denngay)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tablePrices">
+    </tbody>
+</table>

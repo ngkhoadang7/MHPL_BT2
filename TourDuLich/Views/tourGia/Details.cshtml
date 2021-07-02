@@ -1,0 +1,42 @@
+﻿@model TourDuLich.Models.tour_gia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tour_gia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.gia_sotien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gia_sotien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gia_tungay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gia_tungay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gia_denngay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gia_denngay)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.gia_id }) |
+    @Html.ActionLink("Quay lại danh sách Giá", "Index")
+</p>

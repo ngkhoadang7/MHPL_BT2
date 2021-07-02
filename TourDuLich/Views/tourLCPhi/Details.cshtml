@@ -1,0 +1,34 @@
+﻿@model TourDuLich.Models.tour_loaichiphi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tour_loaichiphi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cp_ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cp_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cp_mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cp_mota)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cp_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

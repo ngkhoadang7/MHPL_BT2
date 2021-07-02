@@ -1,0 +1,66 @@
+﻿@model TourDuLich.Models.tour
+
+@{
+    ViewBag.Title = "Details";
+}
+<div>
+    <h3>Tour</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tour_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tour_mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tour_mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loai_id)
+        </dt>
+
+        <dd>
+            @ViewBag.loaiTour
+        </dd>
+    </dl>
+</div>
+<hr />
+<h3>Chi tiết Tour</h3>
+
+<table class="table" style="width:100%; margin-left:40px">
+    <thead>
+        <tr>
+            <th scope="col" style="width:6%">Thứ tự</th>
+            <th scope="col">Tên địa điểm</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tableLocation">
+    @foreach (var item in ViewBag.tour_chitiet)
+    {
+        <tr>
+            <th scope="row">
+                @item.ct_thutu
+            </th>
+            <td>
+                @item.dd_ten
+            </td>
+            <td>
+                @item.dd_mota
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.tour_id }) |
+    @Html.ActionLink("Quay lại danh sách Tour", "Index")
+</p>

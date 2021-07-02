@@ -1,0 +1,61 @@
+﻿@model IEnumerable<TourDuLich.Models.tour_khachhang>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách khách hàng</h2>
+
+<p>
+    @Html.ActionLink("Thêm Khách hàng", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.kh_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kh_ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kh_sdt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kh_ngaysinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kh_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kh_cmnd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.kh_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kh_ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kh_sdt)
+        </td>
+        <td>
+            @item.kh_ngaysinh.ToString("dd'/'MM'/'yyyy")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kh_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kh_cmnd)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.kh_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,40 @@
+﻿@model TourDuLich.Models.tour_loaichiphi
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Bạn có chắc muốn xóa loại chi phí này></h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cp_ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cp_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cp_mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cp_mota)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+        </div>
+    }
+    <div style="margin-top: 30px">
+        @Html.ActionLink("Quay lại danh sách Loại chi phí", "Index")
+    </div>
+</div>

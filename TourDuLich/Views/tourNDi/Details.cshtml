@@ -1,0 +1,72 @@
+﻿@model TourDuLich.Controllers.tourNDiController.ViewModelIndex
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Danh sách người đi @Model.doan_name</h2>
+
+<div class="container">
+    <hr />
+        <div class="row">
+            <div class="col-md-4"><h4><b>Danh sách nhân viên</b></h4><span>Tổng cộng: @Model.soNV</span></div>
+            <div class="col-md-9 mt-10">
+                <div style="height:224px; overflow-y:auto; overflow-x:hidden">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width:10%">Mã NV</th>
+                                <th scope="col">Họ tên</th>
+                                <th scope="col">Ngày sinh</th>
+                                <th scope="col">Công việc</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staffTable">
+                        @foreach (var item in ViewBag.staffs)
+                        {
+                            <tr>
+                                <th scope="row"> @item.nv_id</th>
+                                <td>@item.nv_ten</td>
+                                <td>@item.nv_ngaysinh.ToString("dd/MM/yyyy")</td>
+                                <td>@item.nv_nhiemvu</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"><h4><b>Danh sách khách hàng</b></h4><span>Tổng cộng: @Model.soKH</span></div>
+            <div class="col-md-9 mt-10">
+                <div style="height:224px; overflow-y:auto; overflow-x:hidden">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="width:10%">Mã KH</th>
+                                <th scope="col">Họ tên</th>
+                                <th scope="col">Ngày sinh</th>
+                                <th scope="col">CMND</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customerTable">
+                        @foreach(var item in ViewBag.customers) 
+                        { 
+                            <tr>
+                                <th scope="row"> @item.kh_id</th>
+                                <td>@item.kh_ten</td>
+                                <td>@item.kh_ngaysinh.ToString("dd/MM/yyyy")</td>
+                                <td>@item.kh_cmnd</td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.tour_nguoidi.nguoidi_id }) |
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</p>

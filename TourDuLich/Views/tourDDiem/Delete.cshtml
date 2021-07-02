@@ -1,0 +1,48 @@
+﻿@model TourDuLich.Models.tour_diadiem
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h2>Bạn có chắc muốn xóa Địa điểm này?</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.dd_thanhpho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dd_thanhpho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dd_ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dd_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dd_mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dd_mota)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+        </div>
+    }
+
+    <div style="margin-top: 30px">
+        @Html.ActionLink("Quay lại danh sách Địa điểm", "Index")
+    </div>
+</div>

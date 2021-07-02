@@ -1,0 +1,58 @@
+﻿@model TourDuLich.Models.tour_khachhang
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tour_khachhang</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.kh_ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kh_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kh_sdt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kh_sdt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kh_ngaysinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kh_ngaysinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kh_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kh_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kh_cmnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kh_cmnd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.kh_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

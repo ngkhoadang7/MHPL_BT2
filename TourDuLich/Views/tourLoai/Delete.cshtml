@@ -1,0 +1,38 @@
+﻿@model TourDuLich.Models.tour_loai
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h2>Bạn có chắc muốn xóa loại Tour này?</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.loai_ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loai_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loai_mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loai_mota)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+        </div>
+    }
+    <div style="margin-top: 30px">
+        @Html.ActionLink("Quay lại danh sách loại Tour", "Index")
+    </div>
+</div>

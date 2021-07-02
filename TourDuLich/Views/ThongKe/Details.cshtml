@@ -1,0 +1,77 @@
+﻿@model IEnumerable<TourDuLich.Controllers.ThongKeController.ViewModelDetail>
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết doanh thu @ViewBag.tour</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Đoàn
+            </th>
+            <th>
+                Số khách
+            </th>
+            <th>
+                Giá tour
+            </th>
+            <th>
+                Doanh thu
+            </th>
+            <th>
+                Chi phí
+            </th>
+            <th>
+                Lãi
+            </th>
+        </tr>
+    </thead>
+    <tbody id="tableSatistic">
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @item.groupName
+            </td>
+            <td>
+                @item.numOfCustomers
+            </td>
+            <td>
+                @TourDuLich.Controllers.ThongKeController.formatMoneyToPrint((decimal)item.cost)
+            </td>
+            <td>
+                @TourDuLich.Controllers.ThongKeController.formatMoneyToPrint((decimal)item.revenue)
+            </td>
+            <td>
+                @if (item.expenses == 0)
+                {
+                    @Html.ActionLink("Thêm chi phí", "Create", new { controller = "tourCPhi" })
+                }
+                else
+                {
+                    @TourDuLich.Controllers.ThongKeController.formatMoneyToPrint((decimal)item.expenses)
+                    
+                    @Html.ActionLink("[Chi tiết]", "Details", new { controller = "tourCPhi", id = item.expensesID })
+                }
+
+            </td>
+            <td>
+                @TourDuLich.Controllers.ThongKeController.formatMoneyToPrint((decimal)item.profit)
+            </td>
+        </tr>
+        }
+    </tbody>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Tổng:</td>
+            <td><b>@TourDuLich.Controllers.ThongKeController.formatMoneyToPrint((decimal)ViewBag.totalRevenue)</b></td>
+            <td><b>@TourDuLich.Controllers.ThongKeController.formatMoneyToPrint((decimal)ViewBag.totalExpenses)</b></td>
+            <td><b>@TourDuLich.Controllers.ThongKeController.formatMoneyToPrint((decimal)ViewBag.totalProfit)</b></td>
+        </tr>
+    </tbody>
+</table>
+

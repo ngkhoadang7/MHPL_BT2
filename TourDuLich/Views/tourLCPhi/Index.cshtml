@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TourDuLich.Models.tour_loaichiphi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách Loại chi phí</h2>
+
+<p>
+    @Html.ActionLink("Thêm Loại chi phí", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cp_ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cp_mota)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cp_ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cp_mota)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.cp_id })
+        </td>
+    </tr>
+}
+
+</table>

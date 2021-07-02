@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TourDuLich.Controllers.tourCPhiController.ViewModelIndex>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh sách chi phí đoàn đi tour</h2>
+
+<p>
+    @Html.ActionLink("Thêm chi phí cho đoàn", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Đoàn
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tour_chiphi.chiphi_total)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.doan_name
+        </td>
+        <td>
+            @TourDuLich.Controllers.tourCPhiController.formatMoneyToPrint(item.tour_chiphi.chiphi_total) VND
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.tour_chiphi.chiphi_id }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.tour_chiphi.chiphi_id })
+        </td>
+    </tr>
+}
+
+</table>

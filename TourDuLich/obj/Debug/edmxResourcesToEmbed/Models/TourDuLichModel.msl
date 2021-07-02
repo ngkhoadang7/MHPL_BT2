@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tour_dulichModelStoreContainer" CdmEntityContainer="tour_dulichEntities">
+    <EntitySetMapping Name="tour_chiphi">
+      <EntityTypeMapping TypeName="tour_dulichModel.tour_chiphi">
+        <MappingFragment StoreEntitySet="tour_chiphi">
+          <ScalarProperty Name="chiphi_id" ColumnName="chiphi_id" />
+          <ScalarProperty Name="doan_id" ColumnName="doan_id" />
+          <ScalarProperty Name="chiphi_total" ColumnName="chiphi_total" />
+          <ScalarProperty Name="chiphi_chitiet" ColumnName="chiphi_chitiet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tour_chitiet">
+      <EntityTypeMapping TypeName="tour_dulichModel.tour_chitiet">
+        <MappingFragment StoreEntitySet="tour_chitiet">
+          <ScalarProperty Name="ct_id" ColumnName="ct_id" />
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+          <ScalarProperty Name="dd_id" ColumnName="dd_id" />
+          <ScalarProperty Name="ct_thutu" ColumnName="ct_thutu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tour_diadiem">
+      <EntityTypeMapping TypeName="tour_dulichModel.tour_diadiem">
+        <MappingFragment StoreEntitySet="tour_diadiem">
+          <ScalarProperty Name="dd_id" ColumnName="dd_id" />
+          <ScalarProperty Name="dd_thanhpho" ColumnName="dd_thanhpho" />
+          <ScalarProperty Name="dd_ten" ColumnName="dd_ten" />
+          <ScalarProperty Name="dd_mota" ColumnName="dd_mota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tour_doan">
+      <EntityTypeMapping TypeName="tour_dulichModel.tour_doan">
+        <MappingFragment StoreEntitySet="tour_doan">
+          <ScalarProperty Name="doan_id" ColumnName="doan_id" />
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+          <ScalarProperty Name="doan_name" ColumnName="doan_name" />
+          <ScalarProperty Name="doan_ngaydi" ColumnName="doan_ngaydi" />
+          <ScalarProperty Name="doan_ngayve" ColumnName="doan_ngayve" />
+          <ScalarProperty Name="doan_chitietchuongtrinh" ColumnName="doan_chitietchuongtrinh" />
+          <ScalarProperty Name="gia_id" ColumnName="gia_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tour_gia">
+      <EntityTypeMapping TypeName="tour_dulichModel.tour_gia">
+        <MappingFragment StoreEntitySet="tour_gia">
+          <ScalarProperty Name="gia_id" ColumnName="gia_id" />
+          <ScalarProperty Name="gia_sotien" ColumnName="gia_sotien" />
+          <ScalarProperty Name="gia_tungay" ColumnName="gia_tungay" />
+          <ScalarProperty Name="gia_denngay" ColumnName="gia_denngay" />
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tour_khachhang">
+      <EntityTypeMapping TypeName="tour_dulichModel.tour_khachhang">
+        <MappingFragment StoreEntitySet="tour_khachhang">
+          <ScalarProperty Name="kh_id" ColumnName="kh_id" />
+          <ScalarProperty Name="kh_ten" ColumnName="kh_ten" />
+          <ScalarProperty Name="kh_sdt" ColumnName="kh_sdt" />
+          <ScalarProperty Name="kh_ngaysinh" ColumnName="kh_ngaysinh" />
+          <ScalarProperty Name="kh_email" ColumnName="kh_email" />
+          <ScalarProperty Name="kh_cmnd" ColumnName="kh_cmnd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tour_loai">
+      <EntityTypeMapping TypeName="tour_dulichModel.tour_loai">
+        <MappingFragment StoreEntitySet="tour_loai">
+          <ScalarProperty Name="loai_id" ColumnName="loai_id" />
+          <ScalarProperty Name="loai_ten" ColumnName="loai_ten" />
+          <ScalarProperty Name="loai_mota" ColumnName="loai_mota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tour_loaichiphi">
+      <EntityTypeMapping TypeName="tour_dulichModel.tour_loaichiphi">
+        <MappingFragment StoreEntitySet="tour_loaichiphi">
+          <ScalarProperty Name="cp_id" ColumnName="cp_id" />
+          <ScalarProperty Name="cp_ten" ColumnName="cp_ten" />
+          <ScalarProperty Name="cp_mota" ColumnName="cp_mota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tour_nguoidi">
+      <EntityTypeMapping TypeName="tour_dulichModel.tour_nguoidi">
+        <MappingFragment StoreEntitySet="tour_nguoidi">
+          <ScalarProperty Name="nguoidi_id" ColumnName="nguoidi_id" />
+          <ScalarProperty Name="doan_id" ColumnName="doan_id" />
+          <ScalarProperty Name="nguoidi_dsnhanvien" ColumnName="nguoidi_dsnhanvien" />
+          <ScalarProperty Name="nguoidi_dskhach" ColumnName="nguoidi_dskhach" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tour_nhanvien">
+      <EntityTypeMapping TypeName="tour_dulichModel.tour_nhanvien">
+        <MappingFragment StoreEntitySet="tour_nhanvien">
+          <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+          <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+          <ScalarProperty Name="nv_sdt" ColumnName="nv_sdt" />
+          <ScalarProperty Name="nv_ngaysinh" ColumnName="nv_ngaysinh" />
+          <ScalarProperty Name="nv_email" ColumnName="nv_email" />
+          <ScalarProperty Name="nv_nhiemvu" ColumnName="nv_nhiemvu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tours">
+      <EntityTypeMapping TypeName="tour_dulichModel.tour">
+        <MappingFragment StoreEntitySet="tours">
+          <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+          <ScalarProperty Name="tour_ten" ColumnName="tour_ten" />
+          <ScalarProperty Name="tour_mota" ColumnName="tour_mota" />
+          <ScalarProperty Name="loai_id" ColumnName="loai_id" />
+          <ScalarProperty Name="tour_chitiet" ColumnName="tour_chitiet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

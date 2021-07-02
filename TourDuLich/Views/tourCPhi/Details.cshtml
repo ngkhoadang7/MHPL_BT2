@@ -1,0 +1,58 @@
+﻿@model TourDuLich.Models.tour_chiphi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết chi phí @ViewBag.doan</h2>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-8">
+            <div style="height:200px; overflow-y:auto; overflow-x:hidden">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Hóa đơn</th>
+                            <th scope="col">Loại chi phí</th>
+                            <th scope="col">Nội dung</th>
+                            <th scope="col">Ngày</th>
+                            <th scope="col">Số tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody id="costDetailTable">
+                        @foreach (var item in ViewBag.chiPhiChiTiet)
+                        {
+                            <tr>
+                                <td>
+                                    @item.chiphi_chitiet.hoaDon
+                                </td>
+                                <td>
+                                    @item.loaiChiPhiText
+                                </td>
+                                <td>
+                                    @item.chiphi_chitiet.noiDung
+                                </td>
+                                <td>
+                                    @TourDuLich.Controllers.tourCPhiController.formatDateToPrint(item.chiphi_chitiet.ngay)
+                                </td>
+                                <td>
+                                    @TourDuLich.Controllers.tourCPhiController.formatMoneyToPrint(item.chiphi_chitiet.soTien) VND
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div style="margin-top:30px">
+                <h4><b>Tổng cộng: </b><span id="totalShow">@TourDuLich.Controllers.tourCPhiController.formatMoneyToPrint(Model.chiphi_total) VND</span></h4>
+            </div>
+        </div>
+
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.chiphi_id }) |
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</p>

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tour_dulichModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tour_chiphi">
+    <Key>
+      <PropertyRef Name="chiphi_id" />
+    </Key>
+    <Property Name="chiphi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="doan_id" Type="Int32" Nullable="false" />
+    <Property Name="chiphi_total" Type="Double" Nullable="false" />
+    <Property Name="chiphi_chitiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tour_chitiet">
+    <Key>
+      <PropertyRef Name="ct_id" />
+    </Key>
+    <Property Name="ct_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tour_id" Type="Int32" Nullable="false" />
+    <Property Name="dd_id" Type="Int32" Nullable="false" />
+    <Property Name="ct_thutu" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tour_diadiem">
+    <Key>
+      <PropertyRef Name="dd_id" />
+    </Key>
+    <Property Name="dd_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dd_thanhpho" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dd_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dd_mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tour_doan">
+    <Key>
+      <PropertyRef Name="doan_id" />
+    </Key>
+    <Property Name="doan_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tour_id" Type="Int32" Nullable="false" />
+    <Property Name="doan_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="doan_ngaydi" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="doan_ngayve" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="doan_chitietchuongtrinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="gia_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tour_gia">
+    <Key>
+      <PropertyRef Name="gia_id" />
+    </Key>
+    <Property Name="gia_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="gia_sotien" Type="Double" Nullable="false" />
+    <Property Name="gia_tungay" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="gia_denngay" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tour_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tour_khachhang">
+    <Key>
+      <PropertyRef Name="kh_id" />
+    </Key>
+    <Property Name="kh_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kh_ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kh_sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kh_ngaysinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="kh_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kh_cmnd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tour_loai">
+    <Key>
+      <PropertyRef Name="loai_id" />
+    </Key>
+    <Property Name="loai_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="loai_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="loai_mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tour_loaichiphi">
+    <Key>
+      <PropertyRef Name="cp_id" />
+    </Key>
+    <Property Name="cp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cp_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cp_mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tour_nguoidi">
+    <Key>
+      <PropertyRef Name="nguoidi_id" />
+    </Key>
+    <Property Name="nguoidi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="doan_id" Type="Int32" Nullable="false" />
+    <Property Name="nguoidi_dsnhanvien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nguoidi_dskhach" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tour_nhanvien">
+    <Key>
+      <PropertyRef Name="nv_id" />
+    </Key>
+    <Property Name="nv_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nv_ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nv_sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nv_ngaysinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="nv_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nv_nhiemvu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tour">
+    <Key>
+      <PropertyRef Name="tour_id" />
+    </Key>
+    <Property Name="tour_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tour_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tour_mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="loai_id" Type="Int32" Nullable="false" />
+    <Property Name="tour_chitiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="tour_dulichEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tour_chiphi" EntityType="Self.tour_chiphi" />
+    <EntitySet Name="tour_chitiet" EntityType="Self.tour_chitiet" />
+    <EntitySet Name="tour_diadiem" EntityType="Self.tour_diadiem" />
+    <EntitySet Name="tour_doan" EntityType="Self.tour_doan" />
+    <EntitySet Name="tour_gia" EntityType="Self.tour_gia" />
+    <EntitySet Name="tour_khachhang" EntityType="Self.tour_khachhang" />
+    <EntitySet Name="tour_loai" EntityType="Self.tour_loai" />
+    <EntitySet Name="tour_loaichiphi" EntityType="Self.tour_loaichiphi" />
+    <EntitySet Name="tour_nguoidi" EntityType="Self.tour_nguoidi" />
+    <EntitySet Name="tour_nhanvien" EntityType="Self.tour_nhanvien" />
+    <EntitySet Name="tours" EntityType="Self.tour" />
+  </EntityContainer>
+</Schema>

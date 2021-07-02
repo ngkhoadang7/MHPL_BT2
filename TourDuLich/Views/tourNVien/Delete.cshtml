@@ -1,0 +1,71 @@
+﻿@model TourDuLich.Models.tour_nhanvien
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h2>Bạn có chắc muốn xóa nhân viên này?</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nv_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nv_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nv_ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nv_ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nv_sdt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nv_sdt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nv_ngaysinh)
+        </dt>
+
+        <dd>
+            @Model.nv_ngaysinh.ToString("dd/MM/yyyy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nv_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nv_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nv_nhiemvu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nv_nhiemvu)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" />
+        </div>
+    }
+    <div style="margin-top: 30px">
+        @Html.ActionLink("Quay lại danh sách Nhân viên", "Index")
+    </div>
+</div>

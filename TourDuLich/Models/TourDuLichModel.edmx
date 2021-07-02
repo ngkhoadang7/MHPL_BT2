@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="tour_dulichModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tour_chiphi">
+          <Key>
+            <PropertyRef Name="chiphi_id" />
+          </Key>
+          <Property Name="chiphi_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="doan_id" Type="int" Nullable="false" />
+          <Property Name="chiphi_total" Type="float" Nullable="false" />
+          <Property Name="chiphi_chitiet" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_chitiet">
+          <Key>
+            <PropertyRef Name="ct_id" />
+          </Key>
+          <Property Name="ct_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tour_id" Type="int" Nullable="false" />
+          <Property Name="dd_id" Type="int" Nullable="false" />
+          <Property Name="ct_thutu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_diadiem">
+          <Key>
+            <PropertyRef Name="dd_id" />
+          </Key>
+          <Property Name="dd_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dd_thanhpho" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="dd_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="dd_mota" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_doan">
+          <Key>
+            <PropertyRef Name="doan_id" />
+          </Key>
+          <Property Name="doan_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tour_id" Type="int" Nullable="false" />
+          <Property Name="doan_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="doan_ngaydi" Type="date" Nullable="false" />
+          <Property Name="doan_ngayve" Type="date" Nullable="false" />
+          <Property Name="doan_chitietchuongtrinh" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="gia_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_gia">
+          <Key>
+            <PropertyRef Name="gia_id" />
+          </Key>
+          <Property Name="gia_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gia_sotien" Type="float" Nullable="false" />
+          <Property Name="gia_tungay" Type="date" Nullable="false" />
+          <Property Name="gia_denngay" Type="date" Nullable="false" />
+          <Property Name="tour_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_khachhang">
+          <Key>
+            <PropertyRef Name="kh_id" />
+          </Key>
+          <Property Name="kh_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kh_ten" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kh_sdt" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="kh_ngaysinh" Type="date" Nullable="false" />
+          <Property Name="kh_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kh_cmnd" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_loai">
+          <Key>
+            <PropertyRef Name="loai_id" />
+          </Key>
+          <Property Name="loai_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="loai_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="loai_mota" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_loaichiphi">
+          <Key>
+            <PropertyRef Name="cp_id" />
+          </Key>
+          <Property Name="cp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cp_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="cp_mota" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_nguoidi">
+          <Key>
+            <PropertyRef Name="nguoidi_id" />
+          </Key>
+          <Property Name="nguoidi_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="doan_id" Type="int" Nullable="false" />
+          <Property Name="nguoidi_dsnhanvien" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nguoidi_dskhach" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_nhanvien">
+          <Key>
+            <PropertyRef Name="nv_id" />
+          </Key>
+          <Property Name="nv_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nv_ten" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nv_sdt" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="nv_ngaysinh" Type="date" Nullable="false" />
+          <Property Name="nv_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="nv_nhiemvu" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tours">
+          <Key>
+            <PropertyRef Name="tour_id" />
+          </Key>
+          <Property Name="tour_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tour_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="tour_mota" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="loai_id" Type="int" Nullable="false" />
+          <Property Name="tour_chitiet" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="tour_dulichModelStoreContainer">
+          <EntitySet Name="tour_chiphi" EntityType="Self.tour_chiphi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour_chitiet" EntityType="Self.tour_chitiet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour_diadiem" EntityType="Self.tour_diadiem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour_doan" EntityType="Self.tour_doan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour_gia" EntityType="Self.tour_gia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour_khachhang" EntityType="Self.tour_khachhang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour_loai" EntityType="Self.tour_loai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour_loaichiphi" EntityType="Self.tour_loaichiphi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour_nguoidi" EntityType="Self.tour_nguoidi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tour_nhanvien" EntityType="Self.tour_nhanvien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tours" EntityType="Self.tours" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tour_dulichModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tour_chiphi">
+          <Key>
+            <PropertyRef Name="chiphi_id" />
+          </Key>
+          <Property Name="chiphi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="doan_id" Type="Int32" Nullable="false" />
+          <Property Name="chiphi_total" Type="Double" Nullable="false" />
+          <Property Name="chiphi_chitiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_chitiet">
+          <Key>
+            <PropertyRef Name="ct_id" />
+          </Key>
+          <Property Name="ct_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tour_id" Type="Int32" Nullable="false" />
+          <Property Name="dd_id" Type="Int32" Nullable="false" />
+          <Property Name="ct_thutu" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_diadiem">
+          <Key>
+            <PropertyRef Name="dd_id" />
+          </Key>
+          <Property Name="dd_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dd_thanhpho" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dd_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dd_mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_doan">
+          <Key>
+            <PropertyRef Name="doan_id" />
+          </Key>
+          <Property Name="doan_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tour_id" Type="Int32" Nullable="false" />
+          <Property Name="doan_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="doan_ngaydi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="doan_ngayve" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="doan_chitietchuongtrinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gia_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_gia">
+          <Key>
+            <PropertyRef Name="gia_id" />
+          </Key>
+          <Property Name="gia_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gia_sotien" Type="Double" Nullable="false" />
+          <Property Name="gia_tungay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="gia_denngay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="tour_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_khachhang">
+          <Key>
+            <PropertyRef Name="kh_id" />
+          </Key>
+          <Property Name="kh_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kh_ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kh_sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kh_ngaysinh" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="kh_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kh_cmnd" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_loai">
+          <Key>
+            <PropertyRef Name="loai_id" />
+          </Key>
+          <Property Name="loai_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="loai_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="loai_mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_loaichiphi">
+          <Key>
+            <PropertyRef Name="cp_id" />
+          </Key>
+          <Property Name="cp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cp_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cp_mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_nguoidi">
+          <Key>
+            <PropertyRef Name="nguoidi_id" />
+          </Key>
+          <Property Name="nguoidi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="doan_id" Type="Int32" Nullable="false" />
+          <Property Name="nguoidi_dsnhanvien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nguoidi_dskhach" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour_nhanvien">
+          <Key>
+            <PropertyRef Name="nv_id" />
+          </Key>
+          <Property Name="nv_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nv_ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nv_sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nv_ngaysinh" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="nv_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nv_nhiemvu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tour">
+          <Key>
+            <PropertyRef Name="tour_id" />
+          </Key>
+          <Property Name="tour_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tour_ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tour_mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="loai_id" Type="Int32" Nullable="false" />
+          <Property Name="tour_chitiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="tour_dulichEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tour_chiphi" EntityType="Self.tour_chiphi" />
+          <EntitySet Name="tour_chitiet" EntityType="Self.tour_chitiet" />
+          <EntitySet Name="tour_diadiem" EntityType="Self.tour_diadiem" />
+          <EntitySet Name="tour_doan" EntityType="Self.tour_doan" />
+          <EntitySet Name="tour_gia" EntityType="Self.tour_gia" />
+          <EntitySet Name="tour_khachhang" EntityType="Self.tour_khachhang" />
+          <EntitySet Name="tour_loai" EntityType="Self.tour_loai" />
+          <EntitySet Name="tour_loaichiphi" EntityType="Self.tour_loaichiphi" />
+          <EntitySet Name="tour_nguoidi" EntityType="Self.tour_nguoidi" />
+          <EntitySet Name="tour_nhanvien" EntityType="Self.tour_nhanvien" />
+          <EntitySet Name="tours" EntityType="Self.tour" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tour_dulichModelStoreContainer" CdmEntityContainer="tour_dulichEntities">
+          <EntitySetMapping Name="tour_chiphi">
+            <EntityTypeMapping TypeName="tour_dulichModel.tour_chiphi">
+              <MappingFragment StoreEntitySet="tour_chiphi">
+                <ScalarProperty Name="chiphi_id" ColumnName="chiphi_id" />
+                <ScalarProperty Name="doan_id" ColumnName="doan_id" />
+                <ScalarProperty Name="chiphi_total" ColumnName="chiphi_total" />
+                <ScalarProperty Name="chiphi_chitiet" ColumnName="chiphi_chitiet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_chitiet">
+            <EntityTypeMapping TypeName="tour_dulichModel.tour_chitiet">
+              <MappingFragment StoreEntitySet="tour_chitiet">
+                <ScalarProperty Name="ct_id" ColumnName="ct_id" />
+                <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+                <ScalarProperty Name="dd_id" ColumnName="dd_id" />
+                <ScalarProperty Name="ct_thutu" ColumnName="ct_thutu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_diadiem">
+            <EntityTypeMapping TypeName="tour_dulichModel.tour_diadiem">
+              <MappingFragment StoreEntitySet="tour_diadiem">
+                <ScalarProperty Name="dd_id" ColumnName="dd_id" />
+                <ScalarProperty Name="dd_thanhpho" ColumnName="dd_thanhpho" />
+                <ScalarProperty Name="dd_ten" ColumnName="dd_ten" />
+                <ScalarProperty Name="dd_mota" ColumnName="dd_mota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_doan">
+            <EntityTypeMapping TypeName="tour_dulichModel.tour_doan">
+              <MappingFragment StoreEntitySet="tour_doan">
+                <ScalarProperty Name="doan_id" ColumnName="doan_id" />
+                <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+                <ScalarProperty Name="doan_name" ColumnName="doan_name" />
+                <ScalarProperty Name="doan_ngaydi" ColumnName="doan_ngaydi" />
+                <ScalarProperty Name="doan_ngayve" ColumnName="doan_ngayve" />
+                <ScalarProperty Name="doan_chitietchuongtrinh" ColumnName="doan_chitietchuongtrinh" />
+                <ScalarProperty Name="gia_id" ColumnName="gia_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_gia">
+            <EntityTypeMapping TypeName="tour_dulichModel.tour_gia">
+              <MappingFragment StoreEntitySet="tour_gia">
+                <ScalarProperty Name="gia_id" ColumnName="gia_id" />
+                <ScalarProperty Name="gia_sotien" ColumnName="gia_sotien" />
+                <ScalarProperty Name="gia_tungay" ColumnName="gia_tungay" />
+                <ScalarProperty Name="gia_denngay" ColumnName="gia_denngay" />
+                <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_khachhang">
+            <EntityTypeMapping TypeName="tour_dulichModel.tour_khachhang">
+              <MappingFragment StoreEntitySet="tour_khachhang">
+                <ScalarProperty Name="kh_id" ColumnName="kh_id" />
+                <ScalarProperty Name="kh_ten" ColumnName="kh_ten" />
+                <ScalarProperty Name="kh_sdt" ColumnName="kh_sdt" />
+                <ScalarProperty Name="kh_ngaysinh" ColumnName="kh_ngaysinh" />
+                <ScalarProperty Name="kh_email" ColumnName="kh_email" />
+                <ScalarProperty Name="kh_cmnd" ColumnName="kh_cmnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_loai">
+            <EntityTypeMapping TypeName="tour_dulichModel.tour_loai">
+              <MappingFragment StoreEntitySet="tour_loai">
+                <ScalarProperty Name="loai_id" ColumnName="loai_id" />
+                <ScalarProperty Name="loai_ten" ColumnName="loai_ten" />
+                <ScalarProperty Name="loai_mota" ColumnName="loai_mota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_loaichiphi">
+            <EntityTypeMapping TypeName="tour_dulichModel.tour_loaichiphi">
+              <MappingFragment StoreEntitySet="tour_loaichiphi">
+                <ScalarProperty Name="cp_id" ColumnName="cp_id" />
+                <ScalarProperty Name="cp_ten" ColumnName="cp_ten" />
+                <ScalarProperty Name="cp_mota" ColumnName="cp_mota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_nguoidi">
+            <EntityTypeMapping TypeName="tour_dulichModel.tour_nguoidi">
+              <MappingFragment StoreEntitySet="tour_nguoidi">
+                <ScalarProperty Name="nguoidi_id" ColumnName="nguoidi_id" />
+                <ScalarProperty Name="doan_id" ColumnName="doan_id" />
+                <ScalarProperty Name="nguoidi_dsnhanvien" ColumnName="nguoidi_dsnhanvien" />
+                <ScalarProperty Name="nguoidi_dskhach" ColumnName="nguoidi_dskhach" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tour_nhanvien">
+            <EntityTypeMapping TypeName="tour_dulichModel.tour_nhanvien">
+              <MappingFragment StoreEntitySet="tour_nhanvien">
+                <ScalarProperty Name="nv_id" ColumnName="nv_id" />
+                <ScalarProperty Name="nv_ten" ColumnName="nv_ten" />
+                <ScalarProperty Name="nv_sdt" ColumnName="nv_sdt" />
+                <ScalarProperty Name="nv_ngaysinh" ColumnName="nv_ngaysinh" />
+                <ScalarProperty Name="nv_email" ColumnName="nv_email" />
+                <ScalarProperty Name="nv_nhiemvu" ColumnName="nv_nhiemvu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tours">
+            <EntityTypeMapping TypeName="tour_dulichModel.tour">
+              <MappingFragment StoreEntitySet="tours">
+                <ScalarProperty Name="tour_id" ColumnName="tour_id" />
+                <ScalarProperty Name="tour_ten" ColumnName="tour_ten" />
+                <ScalarProperty Name="tour_mota" ColumnName="tour_mota" />
+                <ScalarProperty Name="loai_id" ColumnName="loai_id" />
+                <ScalarProperty Name="tour_chitiet" ColumnName="tour_chitiet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
